@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Schedular</title>
+    <link href="./css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/quilljs.css" />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <aside
+        class="sidebarContainer"
+      >
+        <div class="px-3 py-2">
+          <a
+            href=""
+            class="text-decoration-none brand display-5 text-white text-center d-block"
+            >GeegaBalt</a
+          >
+          <div class="mt-4">
+            <ul class="navbar-nav nav">
+              <li class="nav-item mb-2">
+                <a
+                  href="#"
+                  class="text-decoration-none text-light d-block py-2 px-3 rounded shadow-sm"
+                  ><span>Home</span></a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#tasks"
+                  class="text-decoration-none text-light py-2 px-3 rounded shadow-sm d-flex justify-content-between align-items-center"
+                >
+                  <span>All Task</span>
+                  <span class="allTask">00</span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#pending-task"
+                  class="text-decoration-none text-light py-2 px-3 rounded shadow-sm d-flex justify-content-between align-items-center"
+                >
+                  <span>Pending</span>
+                  <span class="pendingTask">00</span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#done-trask"
+                  class="text-decoration-none text-light py-2 px-3 rounded shadow-sm d-flex justify-content-between align-items-center"
+                >
+                  <span>Done</span>
+                  <span class="doneTask">00</span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#trash-task"
+                  class="text-decoration-none text-light py-2 px-3 rounded shadow-sm d-flex justify-content-between align-items-center"
+                >
+                  <span>Trash</span>
+                  <span class="trashTask">00</span>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="#storage"
+                  class="text-decoration-none text-light py-2 px-3 rounded shadow-sm d-flex justify-content-between align-items-center"
+                >
+                  <span>Storage</span>
+                  <small class="storage">00.00 KB/5.0 MB</small>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="/contact-me"
+                  class="text-decoration-none text-light d-block py-2 px-3 rounded shadow-sm"
+                  ><span>Contact Me</span></a
+                >
+              </li>
+              <li class="nav-item mb-2">
+                <a
+                  href="/issues-reports"
+                  class="text-decoration-none text-light d-block py-2 px-3 rounded shadow-sm"
+                  ><span>Issues Reports</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      <div class="w-100">
+        <!-- responsive navbar -->
+        <nav class="navbar bg-black">
+          <div class="container-fluid">
+            <a
+              href=""
+              class="brand display-5 text-decoration-none text-white mx-auto"
+              ><b>geegaBalt</b></a
+            >
+            <ion-icon
+              name="menu-outline"
+              class="text-white menuBtn"
+            ></ion-icon>
+          </div>
+        </nav>
+
+        <div class="container-md mt-3">
+          <div class="container-fluid taskContainer">
+            <form id="taskForm">
+              <div class="input-group">
+                <span
+                  class="input-group-text taskCaptionToggler"
+                  title="Toggle BELT Description"
+                >
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </span>
+                <input
+                  maxlength="80"
+                  minlength="1"
+                  type="text"
+                  class="form-control taskInputName"
+                  placeholder="Type here"
+                  title="BELT"
+                  name="taskInputName"
+                  id="taskInputName"
+                />
+                <button class="btn btn-dark" title="BELT ADD">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </button>
+              </div>
+              <!-- Create the editor container -->
+              <div
+                class="taskInputCaption hide form-control mt-1"
+              >
+              <div id="editor"></div>
+            </div>
+            </form>
+          </div>
+          <div class="p-2 mt-2" style="overflow: scroll">
+            <div class="tasksOutputContainer mx-auto mt-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- js -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./js/01index.js" type="module" defer></script>
+    <script src="./js/quilljs.js"></script>
+    <!-- Initialize Quill editor -->
+    <script>
+     var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var quill = new Quill('#editor', {
+  modules: {
+    toolbar: toolbarOptions
+  },
+  theme: 'snow'
+});
+    </script>
+  </body>
+</html>

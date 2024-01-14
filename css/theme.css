@@ -1,0 +1,17 @@
+:root {
+    --light-red: #ffb8b8;
+    --light-green: #3ae374;
+    --light-yellow: #fffa65;
+}
+
+.task.pending {
+    background-color: var(--light-yellow);
+}
+
+.task.trash {
+    background-color: var(--light-red);
+}
+
+.task.done {
+    background-color: var(--light-green);
+}

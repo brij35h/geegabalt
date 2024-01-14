@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap');
+@import url('./theme.css');
+
+:root{
+    /* dark mode */
+    --light-color:#535c68;
+    --secondary-color:#353141;
+    --primary-color:#1e272e;
+    --dark-color:#000000;
+    --color:#CAD3C8;
+    --danger-color:#e84118; 
+    --success-color:#44bd32;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+    position: fixed;
+    width: 100%;
+    overflow: scroll;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.brand{
+    font-family: 'Bebas Neue', sans-serif;
+}
+.mainContainer{
+    display: flex;
+    height: 100vh;
+    background-color: var(--secondary-color);
+}
+/* icons */
+ion-icon{
+    font-size: 22px;
+    cursor: pointer;
+}
+/* show/hide */
+.show{
+    transition: 2s;
+    display: block!important;
+}
+.hide{
+    transition: 2s;
+    display: none!important;
+}
+/* sidebar */
+.mainContainer{
+    position: relative;
+}
+.mainContainer aside{
+    border-left:none!important;
+    border-top:none!important;
+    border-bottom:none!important;
+    /* background-color: var(--dark-color) */
+}
+.mainContainer aside>div{
+    background-color: var(--dark-color);
+    width: 250px;
+    position: relative;
+    transition: .5s;
+    height: 100vh;
+}
+
+.navbar-nav{
+    list-style: none;
+}
+.navbar-nav li a{
+    background-color: var(--secondary-color);
+    transition: .2s;
+}
+.navbar-nav li a:hover{
+    background-color: var(--light-color);
+}
+/* main container */
+.taskContainer{
+    overflow: scroll;
+    max-width: 800px;
+}
+.taskInputCaption .ql-editor{
+    max-height: 300px;
+    overflow: scroll;
+    height: 200px;
+}
+
+/* tasksOutputContainer */
+.tasksOutputContainer{
+    max-width: 900px;
+    height: 83vh;
+}
+.tasksOutputContainer .task{
+    background-color: var(--dark-color);
+    /* overflow: scroll; */
+    position: relative;
+}
+.task .new_task_desc{
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+    min-height: fit-content;
+    left: 0;
+    top: 54px;
+    background-color: var(--dark-color);
+    display: none;
+    overflow: scroll;
+    z-index: 2;
+}
+.tasksOutputContainer .task_name{
+    max-width: 80%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.task_time{
+    color: var(--color);
+}
+.tasksOutputContainer .task:hover{
+    background-color: var(--primary-color);
+}
+.tasksOutputContainer .task span::first-letter{
+    text-transform: uppercase;
+}
+
+.tasksOutputContainer .task span{
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.task_edit{
+    position: absolute;
+    right: 12px;
+    display: none!important;
+}
+.tasksOutputContainer .task:hover .task_edit, .tasksOutputContainer .task:hover .new_task_desc{
+    display: block!important;
+}
+.tasksOutputContainer .task:hover .task_time{
+    display: none!important;
+}
+
+.menu_btn{
+    display: none;
+}
+nav{
+    display: none!important;
+}
+@media (max-width:800px) {
+    nav{
+        display: block!important;
+    }
+    .menu_btn{
+        display: block;
+        font-size: 30px;
+    }
+    .mainContainer aside{
+        position: absolute;
+        left: -100%;
+        z-index: 4;
+        width: 90%;
+        transition: .2s;
+        height: 100vh;
+    }
+    .mainContainer aside > div{
+        max-width:250px ;
+    }
+    .mainContainer aside.sidebarToggle{
+        left: 0px;
+    }
+}
+@media (max-width:500px) {
+    .mainContainer aside{
+        width: 80%;
+    }
+    ion-icon{
+        font-size: 16px;
+    }
+   
+    .tasksOutputContainer .task span{
+        max-width: 85%;
+    }
+     span, .new_task_desc span, .new_task_desc p, .new_task_desc div{
+        font-size: 14px;
+    }
+    small{
+        font-size: 11px!important;
+    }
+}
